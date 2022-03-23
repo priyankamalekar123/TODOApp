@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_component"
+    app:startDestination="@id/firstFragment">
+
+
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.example.android.todotask.FirstFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_first" >
+        <action
+            android:id="@+id/action_firstFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_firstFragment_to_IF_User_Login_Fragment"
+            app:destination="@id/IF_User_Login_Fragment"
+            app:popUpTo="@id/firstFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.android.todotask.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.android.todotask.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+
+        <action
+            android:id="@+id/action_loginFragment_to_myTaskFragment"
+            app:destination="@id/myTaskFragment"
+            app:popUpTo="@id/firstFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.android.todotask.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" />
+
+    <fragment
+        android:id="@+id/myTaskFragment"
+        android:name="com.example.android.todotask.MyTaskFragment"
+        android:label="fragment_my_task"
+        tools:layout="@layout/fragment_my_task" >
+        <action
+            android:id="@+id/action_myTaskFragment_to_newTaskFragment"
+            app:destination="@id/newTaskFragment" />
+        <action
+            android:id="@+id/action_myTaskFragment_to_detailViewFragment"
+            app:destination="@id/detailViewFragment" />
+        <action
+            android:id="@+id/action_myTaskFragment_to_firstFragment"
+            app:destination="@id/firstFragment"
+            app:popUpTo="@id/firstFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/newTaskFragment"
+        android:name="com.example.android.todotask.NewTaskFragment"
+        android:label="fragment_new_task"
+        tools:layout="@layout/fragment_new_task" />
+    <fragment
+        android:id="@+id/detailViewFragment"
+        android:name="com.example.android.todotask.DetailViewFragment"
+        android:label="fragment_detail_view"
+        tools:layout="@layout/fragment_detail_view" >
+        <action
+            android:id="@+id/action_detailViewFragment_to_myTaskFragment"
+            app:destination="@id/myTaskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/IF_User_Login_Fragment"
+        android:name="com.example.android.todotask.IF_User_Login_Fragment"
+        android:label="fragment_i_f__user__login_"
+        tools:layout="@layout/fragment_i_f__user__login_" >
+        <action
+            android:id="@+id/action_IF_User_Login_Fragment_to_myTaskFragment"
+            app:destination="@id/myTaskFragment" />
+    </fragment>
+
+
+</navigation>
