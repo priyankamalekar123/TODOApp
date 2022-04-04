@@ -1,146 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
-    android:background="@color/back"
+    android:background="#ffffff"
+    android:orientation="vertical"
     tools:context=".NewTaskFragment">
 
     <TextView
-        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
+        android:background="#f2f2f2"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:text="Basic Details"
+        android:textColor="@color/black" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/title"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:gravity="center_horizontal"
-        android:text="New Task"
-        android:textColor="@color/green"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:hint="Title"
+        android:textColorHint="@color/faint_black"
+        app:boxStrokeColor="@color/colorPrimary">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="24dp"
-        android:text="Title"
-        android:textColor="@color/green"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/title1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/title1"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:padding="5dp"
-        android:background="@color/light_grey"
-        android:inputType="text"
-        android:textSize="20sp"
-        android:textColor="@color/green"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.029"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:textColorHint="@color/faint_black"
+        app:boxStrokeColor="@color/colorPrimary">
 
-    <TextView
-        android:id="@+id/Date"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="16dp"
-        android:text="Date"
-        android:textColor="@color/green"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.012"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title1" />
+        <AutoCompleteTextView
+            android:id="@+id/date1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Select Date"
+            android:textColor="@color/faint_black" />
 
-    <TextView
-        android:id="@+id/date1"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="Select Date"
-        android:textSize="20sp"
-        android:padding="5dp"
-        android:textColor="@color/green"
-        android:background="@color/light_grey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Date" />
-
-
-    <TextView
-        android:id="@+id/Status"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="16dp"
-        android:text="Status"
-        android:textColor="@color/green"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date1" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
         android:id="@+id/status_spinner"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:textSize="20sp"
-        android:padding="5dp"
-        android:textColor="@color/green"
-        android:background="@color/light_grey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Status" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/status1" />
 
-    <TextView
-        android:id="@+id/Description"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="16dp"
-        android:text="Description"
-        android:textColor="@color/green"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/status_spinner" />
 
-    <EditText
-        android:id="@+id/editTextTextMultiLine"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:maxLines="10"
-        android:minLines="3"
-        android:textSize="20sp"
-        android:padding="5dp"
-        android:textColor="@color/green"
-        android:background="@color/light_grey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Description" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:hint="Description"
+        android:textColorHint="@color/faint_black"
+        app:boxStrokeColor="@color/colorPrimary">
 
-    <Button
-        android:id="@+id/save_task"
-        android:layout_width="200dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextTextMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:maxLines="10"
+            android:minLines="3"
+            android:textColor="@color/faint_black"
+            android:textSize="20sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/btn_back"
-        android:text="SAVE"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.445"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+        android:layout_marginTop="260dp"
+        android:background="@drawable/elevation"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:padding="10dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/save_task"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="save task"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/update_task"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@color/colorPrimary"
+            android:text="update task"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/save_task" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

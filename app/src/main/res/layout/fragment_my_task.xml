@@ -6,45 +6,89 @@
     android:id="@+id/myTaskFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp"
-    android:background="@color/back"
+    android:background="#e1e1e1"
     tools:context=".MyTaskFragment">
 
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:gravity="center"
-        android:text="All Tasks"
-        android:textColor="@color/black"
-        android:textSize="40sp"
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:chipSpacingHorizontal="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_marginTop="3dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingTop="6dp"
+        app:singleLine="true"
+        android:background="#ffffff"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/allTask"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="20dp"
+            android:checked="true"
+            android:text="All Tasks"
+            android:textColor="@drawable/statuscomplete"
+            app:chipBackgroundColor="@drawable/statuscomplete1"
+            app:chipStrokeColor="@color/oragne"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/allPending"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:chipBackgroundColor="@drawable/statuspendding"
+            android:text="All Pending"
+            android:textColor="@drawable/statuspending1"
+            app:chipStrokeColor="#C39800"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/allCompleted"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:chipBackgroundColor="@drawable/status"
+            android:text="All Completed"
+            android:textColor="@drawable/status2"
+            app:chipStrokeColor="@color/green"
+            app:chipStrokeWidth="1dp" />
+
+
+    </com.google.android.material.chip.ChipGroup>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/floatingbtn"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="24dp"
-        android:src="@drawable/add"
-        app:tint="@color/white"
+        android:layout_width="199dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn_back"
+        android:text="ADD NEW TASK"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:icon="@drawable/add_circle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
 

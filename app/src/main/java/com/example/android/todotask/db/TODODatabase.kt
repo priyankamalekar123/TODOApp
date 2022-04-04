@@ -4,10 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.android.todotask.models.Subtask
 import com.example.android.todotask.models.Task
 import com.example.android.todotask.models.User
 
-@Database(entities = [User::class, Task::class], version = 1)
+@Database(entities = [User::class, Task::class,Subtask::class], version = 1)
 abstract class TODODatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
@@ -23,7 +24,8 @@ abstract class TODODatabase : RoomDatabase() {
                 synchronized(this) {
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
-                        TODODatabase::class.java, "TODOdb"
+                        TODODatabase::class.java,
+                        "TODOdb"
                     )
                         .build()
                 }

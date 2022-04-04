@@ -17,6 +17,7 @@ class detailViewModel(private val userRepository: UserRepository) : ViewModel() 
 
 
 
+
     fun getAllTask(user_id: Int) {
         GlobalScope.launch {
             var task = userRepository.getAllTask(user_id)
@@ -44,6 +45,7 @@ class detailViewModel(private val userRepository: UserRepository) : ViewModel() 
         }
 
     }
+
 
     fun getUser(email: String) {
         GlobalScope.launch {

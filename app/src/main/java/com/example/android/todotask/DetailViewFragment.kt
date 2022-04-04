@@ -1,9 +1,11 @@
 package com.example.android.todotask
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -18,6 +20,9 @@ import com.example.android.todotask.models.Task
 import com.example.android.todotask.models.User
 import com.example.android.todotask.viewModels.detailViewModel
 import kotlinx.android.synthetic.main.fragment_detail_view.*
+import kotlinx.android.synthetic.main.fragment_detail_view.title
+import kotlinx.android.synthetic.main.fragment_detail_view.view.*
+import kotlinx.android.synthetic.main.item_view.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -58,6 +63,20 @@ class DetailViewFragment() : Fragment(R.layout.fragment_detail_view) {
         Log.d("position_is ", position.toString())
 
 
+
+        update.visibility = View.GONE
+
+        edit.setOnClickListener {
+            edit.visibility = View.GONE
+            update.visibility = View.VISIBLE
+
+            title.isEnabled = true
+            date1.isEnabled = true
+            status_spinner.isEnabled = true
+            EditTextTextMultiLine.isEnabled = true
+        }
+
+
         detailViewModel1.getUser(getemail!!)
         detailViewModel1.user1.observe(this, Observer {
             var user = it
@@ -86,7 +105,9 @@ class DetailViewFragment() : Fragment(R.layout.fragment_detail_view) {
 
                 //Update task
                 update.setOnClickListener {
-                    var task = Task(task_add.get(0).id, title1.text.toString(), date1.text.toString(),
+                    var task = Task(task_add.get(0).id,
+                        title1.text.toString(),
+                        date1.text.toString(),
                         //status_text_view1.text.toString(),
                         status_spinner.selectedItem.toString(),
                         editTextTextMultiLine.text.toString(),
@@ -95,6 +116,7 @@ class DetailViewFragment() : Fragment(R.layout.fragment_detail_view) {
                     detailViewModel1.updateTask(task)
                     Toast.makeText(this.context, "Task Updated successfully....", Toast.LENGTH_SHORT)
                         .show()
+                    findNavController().popBackStack()
                 }
 
 
@@ -108,7 +130,7 @@ class DetailViewFragment() : Fragment(R.layout.fragment_detail_view) {
                     //for status spinner
                     val status = arrayOf("Pending", "Running", "Done")
                     val arrayadapter = ArrayAdapter(this.context!!, R.layout.spinner_list, status)
-                    status_spinner.adapter = arrayadapter
+                    status_spinner.setAdapter(arrayadapter)
 
                     //set status spinner
                     var status_from_task = task_add.get(0).Status
@@ -121,8 +143,7 @@ class DetailViewFragment() : Fragment(R.layout.fragment_detail_view) {
                                Log.d("status is ", status1)
 
                            }
-
-                           override fun onNothingSelected(p0: AdapterView<*>?) {
+                          override fun onNothingSelected(p0: AdapterView<*>?) {
                            }
                        }
 
@@ -141,7 +162,7 @@ class DetailViewFragment() : Fragment(R.layout.fragment_detail_view) {
                 val myDateFormat = "dd/MM/yyyy"
                 val sdf = SimpleDateFormat(myDateFormat, Locale.US)
                 val date_is = sdf.format(cal.time)
-                date1.text = date_is
+                date1.setText(date_is)
             }
         }
         date1.setOnClickListener {
@@ -152,11 +173,42 @@ class DetailViewFragment() : Fragment(R.layout.fragment_detail_view) {
                 cal.get(Calendar.DAY_OF_MONTH)
             ).show()
         }
+
+
+        //Delete task
+//        delete.setOnClickListener {
+//            detailViewModel1.deleteTask(task_add.get(0))
+//            findNavController().navigate(R.id.action_detailViewFragment_to_myTaskFragment)
+//            Toast.makeText(this.context, "Task Deleted successfully....", Toast.LENGTH_SHORT).show()
+//        }
+
+
         delete.setOnClickListener {
-            detailViewModel1.deleteTask(task_add.get(0))
-            findNavController().navigate(R.id.action_detailViewFragment_to_myTaskFragment)
-            Toast.makeText(this.context, "Task Deleted successfully....", Toast.LENGTH_SHORT).show()
+            val builder = AlertDialog.Builder(this.context)
+            //set title for alert dialog
+            builder.setTitle("Delete Task")
+            //set message for alert dialog
+            builder.setMessage("Task delete from your data")
+
+            //performing positive action
+            builder.setPositiveButton("Yes"){dialogInterface, which ->
+                detailViewModel1.deleteTask(task_add.get(0))
+                Toast.makeText(this.context,"your task is deleted",Toast.LENGTH_LONG).show()
+                findNavController().popBackStack()
+            }
+            //performing negative action
+            builder.setNegativeButton("No"){dialogInterface, which ->
+            }
+
+            // Create the AlertDialog
+            val alertDialog: AlertDialog = builder.create()
+
+            // Set other dialog properties
+            alertDialog.setCancelable(false)
+            alertDialog.show()
         }
+
+
     }
 
     //Inflate the menu
