@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
 
+
+    ///////////////////////////////////////////
+    /////Project clone ////////////////////////
+
     lateinit var appBarConfiguration:AppBarConfiguration
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
