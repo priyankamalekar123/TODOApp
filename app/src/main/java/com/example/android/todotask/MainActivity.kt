@@ -29,6 +29,9 @@ class MainActivity : AppCompatActivity() {
     ///////////////////////////////////////////
     /////Project clone ////////////////////////
 
+    /////////////////////////////////
+    //////////Project clone 2nd time//////////
+
     lateinit var appBarConfiguration:AppBarConfiguration
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
