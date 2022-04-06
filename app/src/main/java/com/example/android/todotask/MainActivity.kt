@@ -27,15 +27,14 @@ class MainActivity : AppCompatActivity() {
 
 
     ///////////////////////////////////////////
-    /////Project clone ////////////////////////
+    /////Project clone /////
 
-    /////////////////////////////////
-    //////////Project clone 2nd time//////////
 
     lateinit var appBarConfiguration:AppBarConfiguration
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         //navController = navHostFragment.findNavController()
