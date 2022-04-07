@@ -9,10 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7abadb04-0d67-4853-8cae-2e11e1ab5fd5" name="Default Changelist" comment="all set">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_i_f__user__login_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_i_f__user__login_.xml" afterDir="false" />
-    </list>
+    <list default="true" id="7abadb04-0d67-4853-8cae-2e11e1ab5fd5" name="Default Changelist" comment="all set" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,7 +139,28 @@
       <option name="project" value="LOCAL" />
       <updated>1649307154334</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="new branch testing1">
+      <created>1649321649029</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1649321649029</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added new text field">
+      <created>1649321768178</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1649321768178</updated>
+    </task>
+    <task id="LOCAL-00007" summary="added new text field in testing1">
+      <created>1649321936712</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1649321936712</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -161,6 +179,9 @@
     <MESSAGE value="new text added" />
     <MESSAGE value=" 2nd button added" />
     <MESSAGE value="all set" />
-    <option name="LAST_COMMIT_MESSAGE" value="all set" />
+    <MESSAGE value="new branch testing1" />
+    <MESSAGE value="added new text field" />
+    <MESSAGE value="added new text field in testing1" />
+    <option name="LAST_COMMIT_MESSAGE" value="added new text field in testing1" />
   </component>
 </project>
