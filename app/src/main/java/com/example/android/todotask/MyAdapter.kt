@@ -1,10 +1,8 @@
 package com.example.android.todotask
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Build
 import android.text.format.DateFormat
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +11,6 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.todotask.models.Task
 import java.text.SimpleDateFormat
-/*import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter*/
 import java.util.*
 
 class MyAdapter(val context: Context,val task:List<Task>,val userInterface: userInterface):RecyclerView.Adapter<MyAdapter.MyViewHolder>(){

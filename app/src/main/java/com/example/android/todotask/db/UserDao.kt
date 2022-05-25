@@ -1,6 +1,7 @@
 package com.example.android.todotask.db
 
 import androidx.room.*
+import com.example.android.todotask.models.ImageData
 import com.example.android.todotask.models.Subtask
 import com.example.android.todotask.models.Task
 import com.example.android.todotask.models.User
@@ -62,5 +63,11 @@ interface UserDao {
     @Query("UPDATE subtask SET is_checked = :boolean_val WHERE id = :id")
     suspend fun setCheckStatus(boolean_val: Boolean,id: Int)
 
+    @Insert
+    suspend fun addImage(image: ImageData)
+
+
+    @Query("SELECT image FROM imageData")
+    suspend fun getImage(): List<String>
 
 }

@@ -47,19 +47,19 @@ class DetailViewFragment() : Fragment(R.layout.fragment_detail_view) {
 
         // SharedPreference Instances
         val sharedPreferences: SharedPreferences =
-            this.activity!!.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+            this.requireActivity().getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
         //getSharedPreference value
         val getemail = sharedPreferences.getString("email_key", null)
         val getpassword = sharedPreferences.getString("password_key", null)
 
 
-        val repository = (activity!!.application as TODOApplication).userRepository
+        val repository = (requireActivity().application as TODOApplication).userRepository
         detailViewModel1 = ViewModelProvider(
             this,
             detailViewModelFactory(repository)
         ).get(detailViewModel::class.java)
 
-        val position = arguments!!.getInt("position")
+        val position = requireArguments().getInt("position")
         Log.d("position_is ", position.toString())
 
 
@@ -78,12 +78,12 @@ class DetailViewFragment() : Fragment(R.layout.fragment_detail_view) {
 
 
         detailViewModel1.getUser(getemail!!)
-        detailViewModel1.user1.observe(this, Observer {
+        detailViewModel1.user1.observe(viewLifecycleOwner, Observer {
             var user = it
             user_for_id.add(user)
 
             detailViewModel1.getAllTask(it.id)
-            detailViewModel1.tasks.observe(this, Observer {
+            detailViewModel1.tasks.observe(viewLifecycleOwner, Observer {
                 task = it as ArrayList<Task>
                 task.size
                 Log.d("tasks_in_function", task.toString())
@@ -122,14 +122,14 @@ class DetailViewFragment() : Fragment(R.layout.fragment_detail_view) {
 
                 //function for getting single task
                 detailViewModel1.getTask(task_add.get(0).Title)
-                detailViewModel1.task1.observe(this, Observer {
+                detailViewModel1.task1.observe(viewLifecycleOwner, Observer {
                     var single_task = it
                     Log.d("single_task_is = ", single_task.toString())
 
 
                     //for status spinner
                     val status = arrayOf("Pending", "Running", "Done")
-                    val arrayadapter = ArrayAdapter(this.context!!, R.layout.spinner_list, status)
+                    val arrayadapter = ArrayAdapter(this.requireContext(), R.layout.spinner_list, status)
                     status_spinner.setAdapter(arrayadapter)
 
                     //set status spinner
@@ -167,7 +167,7 @@ class DetailViewFragment() : Fragment(R.layout.fragment_detail_view) {
         }
         date1.setOnClickListener {
             DatePickerDialog(
-                context!!, dateSetListener,
+                requireContext(), dateSetListener,
                 cal.get(Calendar.YEAR),
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH)
@@ -221,10 +221,10 @@ class DetailViewFragment() : Fragment(R.layout.fragment_detail_view) {
     //handle Item click of menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        //get item id to handle iten click
+        //get item id to handle item click
         if (item.itemId == R.id.loguot) {
             val sharedPreferences: SharedPreferences =
-                this.activity!!.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+                this.requireActivity().getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
             var editor = sharedPreferences.edit()
             editor.clear()
             editor.apply()

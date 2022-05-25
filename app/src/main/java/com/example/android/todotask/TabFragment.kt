@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_tab.*
 import java.text.FieldPosition
 import javax.xml.xpath.XPathFactory.newInstance
 
-class TabFragment : Fragment(R.layout.fragment_tab) {
+class TabFragment() : Fragment(R.layout.fragment_tab) {
 
     private val sharedPrefFile = "UserCredential"
 
@@ -34,15 +34,15 @@ class TabFragment : Fragment(R.layout.fragment_tab) {
 
  //SharedPreference Instances
         val sharedPreferences: SharedPreferences =
-            this.activity!!.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+            this.requireActivity().getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
         //getSharedPreference value
         val getemail = sharedPreferences.getString("email_key", null)
         val getpassword = sharedPreferences.getString("password_key", null)
 
         // get position and id
-        val position1 = arguments!!.getInt("position")
+        val position1 = requireArguments().getInt("position")
         Log.d("position_is ", position1.toString())
-        val id1 = arguments!!.getInt("ID")
+        val id1 = requireArguments().getInt("ID")
         Log.d("iddddd_isssss", id.toString())
 
 
@@ -52,6 +52,7 @@ class TabFragment : Fragment(R.layout.fragment_tab) {
 
         tabAdapter.addFrag(TaskFragment.newInstance(position1,id1),"Overview")
         tabAdapter.addFrag(RecordFragment.newInstance(position1,id1),"Sub Task")
+        tabAdapter.addFrag(ImageFragment(),"Images")
 
         // set adapter on viewpager
         viewpager.adapter = tabAdapter

@@ -1,6 +1,7 @@
 package com.example.android.todotask.models
 
 
+import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.room.Entity
 import androidx.room.ForeignKey
@@ -18,6 +19,4 @@ data class Task(
     val Description:String,
     //ForeinKey
     val user_id:Int
-
-
-)
+    )

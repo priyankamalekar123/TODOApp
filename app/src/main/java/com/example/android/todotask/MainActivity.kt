@@ -1,30 +1,20 @@
 package com.example.android.todotask
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import kotlinx.android.synthetic.main.activity_main.*
+import com.google.firebase.analytics.FirebaseAnalytics
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var navController: NavController
-
+    private lateinit var navController1: NavController
+    lateinit var mFirebaseAnalytics:FirebaseAnalytics
 
 
     lateinit var appBarConfiguration:AppBarConfiguration
@@ -35,9 +25,9 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         //navController = navHostFragment.findNavController()
-        navController = navHostFragment.navController
+        navController1 = navHostFragment.navController
        // appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController/*,appBarConfiguration*/)
+        setupActionBarWithNavController(navController1/*,appBarConfiguration*/)
 
        var actionBar: ActionBar? = getSupportActionBar()
 //        //actionBar!!.setTitle("TODO Tasks")
@@ -46,9 +36,36 @@ class MainActivity : AppCompatActivity() {
 //
         var colorDrawable:ColorDrawable = ColorDrawable(Color.parseColor("#FA675C"))
         actionBar!!.setBackgroundDrawable(colorDrawable)
+
+//   Firebase initiated
+    mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+
+// firebase analytics event1
+//     var bundle = Bundle().apply {
+//         this.putString("name is","Priyanka")
+//         this.putInt("Age is",21)
+//     }
+//        mFirebaseAnalytics.setDefaultEventParameters(bundle)
+
+//  firebase analytics suggested event
+    var bundle1 = Bundle()
+        bundle1.putInt(FirebaseAnalytics.Param.ITEM_ID,1)
+        bundle1.putString(FirebaseAnalytics.Param.ITEM_NAME,"Priyanka")
+        bundle1.putString(FirebaseAnalytics.Param.CONTENT_TYPE,"image")
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT,bundle1)
+//        mFirebaseAnalytics.setAnalyticsCollectionEnabled(true)
+//        mFirebaseAnalytics.setSessionTimeoutDuration(1000000)
+
+//      firebase analytics custom parameter
+        val parameters = Bundle().apply {
+            this.putString("level_name", "Caverns01")
+            this.putInt("level_difficulty", 4)
+        }
+        mFirebaseAnalytics.setDefaultEventParameters(parameters)
+
     }
     override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp(/*appBarConfiguration*/) || super.onSupportNavigateUp()
+        return navController1.navigateUp(/*appBarConfiguration*/) || super.onSupportNavigateUp()
     }
 
 

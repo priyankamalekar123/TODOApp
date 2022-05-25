@@ -37,42 +37,31 @@ class MyTaskFragment : Fragment(R.layout.fragment_my_task), userInterface {
 
 
         val sharedPreferences: SharedPreferences =
-            this.activity!!.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+            this.requireActivity().getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
 
         //getSharedPreference value
         val getemail = sharedPreferences.getString("email_key", null)
         val getpassword = sharedPreferences.getString("password_key", null)
 
 
-        val repository1 = (activity!!.application as TODOApplication).userRepository
+        val repository1 = (requireActivity().application as TODOApplication).userRepository
         myTaskViewModel1 = ViewModelProvider(
             this,
             mytaskViewModelFactory(repository1)
         ).get(myTaskViewModel::class.java)
 
-       //////Chip/////
-        var chip = Chip(this.context)
-        var drawable = ChipDrawable.createFromAttributes(this.requireContext(),null,0,R.style.Widget_MaterialComponents_Chip_Choice)
-         chip.setChipDrawable(drawable)
-         chipGroup.addView(chip)
-
-
         myTaskViewModel1.getUser(getemail!!)
-        myTaskViewModel1.user1.observe(this, Observer {
+        myTaskViewModel1.user1.observe(viewLifecycleOwner, Observer {
             var user = it
-//            Log.d("loged user is", it.toString())
-//            Log.d("loged user id is", it.id.toString())
-
-
             myTaskViewModel1.getAllTask(user.id)
-            myTaskViewModel1.tasks.observe(this, Observer {
+            myTaskViewModel1.tasks.observe(viewLifecycleOwner, Observer {
                 tasks.clear()
                 tasks.addAll(it)
                 //tasks = it as ArrayList<Task>
                 tasksAll= it as ArrayList<Task>
                 //dynamic list
                     recyclerview.layoutManager = LinearLayoutManager(this.context)
-                    adapter1 = MyAdapter(context!!, tasks, this)
+                    adapter1 = MyAdapter(requireContext(), tasks, this)
                     //recyclerview.adapter = adapter1
                     recyclerview.adapter = adapter1
                     Log.d("size_of_task_before", tasks.size.toString())
@@ -84,16 +73,12 @@ class MyTaskFragment : Fragment(R.layout.fragment_my_task), userInterface {
             tasks.clear()
             tasks.addAll(tasksAll)
             adapter1.notifyDataSetChanged()
-
-            var chip = Chip(this.context)
-            var drawable:ChipDrawable = ChipDrawable.createFromAttributes(this.context!!,null,0,R.style.Widget_MaterialComponents_Chip_Choice)
-            chip.setChipDrawable(drawable)
         }
 
         //for task pending
         allPending.setOnClickListener {
             myTaskViewModel1.getTaskStatus("Pending")
-            myTaskViewModel1.taskStatus.observe(this, Observer {
+            myTaskViewModel1.taskStatus.observe(viewLifecycleOwner, Observer {
                 tasks.clear()
                 tasks.addAll(it)
                 Log.d("Pending", tasks.toString())
@@ -104,7 +89,7 @@ class MyTaskFragment : Fragment(R.layout.fragment_my_task), userInterface {
         //for task completed
         allCompleted.setOnClickListener {
             myTaskViewModel1.getTaskStatus("Done")
-            myTaskViewModel1.taskStatus.observe(this, Observer {
+            myTaskViewModel1.taskStatus.observe(viewLifecycleOwner, Observer {
                 tasks.clear()
                 tasks.addAll(it)
                 Log.d("Pending", tasks.toString())
@@ -143,7 +128,7 @@ class MyTaskFragment : Fragment(R.layout.fragment_my_task), userInterface {
         //get item id to handle iten click
         if (item.itemId == R.id.loguot) {
             val sharedPreferences: SharedPreferences =
-                this.activity!!.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+                this.requireActivity().getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
             var editor = sharedPreferences.edit()
             editor.clear()
             editor.apply()

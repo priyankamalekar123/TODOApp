@@ -14,14 +14,14 @@
         android:id="@+id/chipGroup"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        app:chipSpacingHorizontal="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:chipSpacing="30dp"
         android:layout_marginTop="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:paddingTop="6dp"
+        android:padding="7dp"
         app:singleLine="true"
+        app:selectionRequired="true"
         android:background="#ffffff"
         app:singleSelection="true">
 
@@ -30,10 +30,9 @@
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:layout_marginStart="20dp"
             android:checked="true"
             android:text="All Tasks"
+            android:layout_margin="10dp"
             android:textColor="@drawable/statuscomplete"
             app:chipBackgroundColor="@drawable/statuscomplete1"
             app:chipStrokeColor="@color/oragne"
@@ -57,6 +56,7 @@
             android:layout_height="wrap_content"
             app:chipBackgroundColor="@drawable/status"
             android:text="All Completed"
+            android:layout_margin="10dp"
             android:textColor="@drawable/status2"
             app:chipStrokeColor="@color/green"
             app:chipStrokeWidth="1dp" />

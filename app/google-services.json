@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "32442963103",
+    "project_id": "android-project-364ea",
+    "storage_bucket": "android-project-364ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32442963103:android:a5981121a453c342c3feaa",
+        "android_client_info": {
+          "package_name": "com.example.android.todotask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "32442963103-mauhr2ltlu6skd7fn6688g6v918q8n9a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVfKGqQpO3-ShuaSlTcPClsTvItk610ik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "32442963103-mauhr2ltlu6skd7fn6688g6v918q8n9a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

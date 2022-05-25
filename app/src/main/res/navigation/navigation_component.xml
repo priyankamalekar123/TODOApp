@@ -114,7 +114,20 @@
         <action
             android:id="@+id/action_tabFragment_to_newTaskFragment"
             app:destination="@id/newTaskFragment" />
+        <action
+            android:id="@+id/action_tabFragment_to_fullScreenImageFragment"
+            app:destination="@id/fullScreenImageFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/imageFragment"
+        android:name="com.example.android.todotask.ImageFragment"
+        android:label="Images"
+        tools:layout="@layout/fragment_image" />
+    <fragment
+        android:id="@+id/fullScreenImageFragment"
+        android:name="com.example.android.todotask.FullScreenImageFragment"
+        android:label="Selected Image"
+        tools:layout="@layout/fragment_full_screen_image" />
 
 
 </navigation>

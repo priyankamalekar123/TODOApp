@@ -22,11 +22,11 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val repository = (activity!!.application as TODOApplication).userRepository
+        val repository = (requireActivity().application as TODOApplication).userRepository
         signupviewModel = ViewModelProvider(this, signupViewModelFactory(repository)).get(signupViewModel::class.java)
 
         signupviewModel.getEmails()
-        signupviewModel.Emails.observe(this, Observer {
+        signupviewModel.Emails.observe(viewLifecycleOwner, Observer {
             user_emails = it
             Log.d("size of email", it.size.toString())
             for (email in user_emails) {

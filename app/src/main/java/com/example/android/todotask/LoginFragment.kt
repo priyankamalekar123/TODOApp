@@ -26,19 +26,19 @@ import kotlinx.android.synthetic.main.fragment_login.*
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val repository = (activity!!.application as TODOApplication).userRepository
+        val repository = (requireActivity().application as TODOApplication).userRepository
         loginViewModel1 = ViewModelProvider(this, LoginViewModelFactory(repository)).get(loginViewModel::class.java)
             // SharedPreference Instances
-       val sharedPreferences:SharedPreferences = this.activity!!.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+       val sharedPreferences:SharedPreferences = this.requireActivity().getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
 
 
         loginViewModel1.getEmail()
-        loginViewModel1.emails.observe(this, Observer {
+        loginViewModel1.emails.observe(viewLifecycleOwner, Observer {
             user_emails = it
         })
 
         loginViewModel1.getUserPassword()
-        loginViewModel1.passwords.observe(this, Observer {
+        loginViewModel1.passwords.observe(viewLifecycleOwner, Observer {
             user_passwords = it
         })
 

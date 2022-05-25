@@ -35,7 +35,7 @@ class TaskFragment: Fragment(R.layout.fragment_task) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments!!.let {
+        requireArguments().let {
             position1 = it.getInt(ARG_PARAM1)
             id1 = it.getInt(ARG_PARAM2)
         }

@@ -1,6 +1,7 @@
 package com.example.android.todotask.repository
 
 import com.example.android.todotask.db.TODODatabase
+import com.example.android.todotask.models.ImageData
 import com.example.android.todotask.models.Subtask
 import com.example.android.todotask.models.Task
 import com.example.android.todotask.models.User
@@ -32,13 +33,11 @@ class UserRepository(private val todoDatabase: TODODatabase) {
     }
 
     suspend fun getAllTask(user_id: Int): List<Task> {
-        val Tasks = todoDatabase.userDao().getAllTask(user_id)
-        return Tasks
+        return todoDatabase.userDao().getAllTask(user_id)
     }
 
     suspend fun getAllTaskwithTaskId(id: Int): Task {
-        val Tasks = todoDatabase.userDao().getAllTaskwithTaskId(id)
-        return Tasks
+        return todoDatabase.userDao().getAllTaskwithTaskId(id)
     }
 
 
@@ -51,8 +50,7 @@ class UserRepository(private val todoDatabase: TODODatabase) {
     }
 
     suspend fun getTask(title: String): List<Task> {
-        val single_task = todoDatabase.userDao().getTask(title)
-        return single_task
+        return todoDatabase.userDao().getTask(title)
     }
 
     suspend fun getTaskStatus(status:String):List<Task>{
@@ -75,6 +73,15 @@ class UserRepository(private val todoDatabase: TODODatabase) {
 
     suspend fun setCheckStatus(boolean: Boolean,id: Int){
         todoDatabase.userDao().setCheckStatus(boolean,id)
+    }
+
+    suspend fun addImage(image:ImageData){
+        todoDatabase.userDao().addImage(image)
+    }
+
+    suspend fun getImage():List<String>{
+        var images = todoDatabase.userDao().getImage()
+        return images
     }
 
 }
